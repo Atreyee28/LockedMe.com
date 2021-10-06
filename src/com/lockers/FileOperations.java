@@ -106,8 +106,7 @@ public class FileOperations {
 	//This function is used to search a user specified file in the current directory
 	public static void search(String filename2) {
 		File file = new File(filename2);
-        try {
-			if (file.createNewFile()== false)
+			if (file.exists())
 				{
 				System.out.println("File found in application");
 				System.out.println("Want to read the content of the file? Type yes to continue or no to exit from application");
@@ -127,8 +126,6 @@ public class FileOperations {
 			     {
 			    	 System.out.println("File not Found");
 			     }
-		} catch (IOException e) {
-			System.err.println(e.getMessage());
-		} 
+		
         }
 }
