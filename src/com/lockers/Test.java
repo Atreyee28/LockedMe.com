@@ -9,19 +9,21 @@ import java.util.Scanner;
 public class Test {
 
 	public static void main(String[] args) {
+		//Welcome the user and show the application name
 		System.out.println("*****************************");
 		System.out.println("Welcome to LockedMe.com!");
         System.out.println("*****************************");
+        //while loop is used to navigate back to the main content if user wants.
         while(true)
         {
-		System.out.println("--------Main Menu--------");
+		System.out.println("--------Main Menu--------"); //showing the main menu
 		System.out.println("1. View the list of files inside current directory \n2. View UI options \n3. Exit from Application");
-		System.out.println("Enter your choice:");
+		System.out.println("Enter your choice:"); //prompt the user to enter choice from the menu
 		Scanner sc=new Scanner(System.in);
 		String ch=sc.next();
 		if(ch.equals("1"))
 		{
-			//showFilesinascendingorder();
+			//showFilesinascendingorder
 			String maindirpath = System.getProperty("user.dir");
             
 	        // File object
@@ -52,13 +54,12 @@ public class Test {
 	        	System.out.println();
 	        }
 	        else {
-	        	System.out.println("Invalid Input.");
-	        	break;
+	        	System.out.println("Invalid Input. Returning to Main menu..");
 	        }
 		}
 		else if (ch.equals("2"))
 				{
-	    	//addFiles
+	    	//UI options
 	    	System.out.println("A. Add a file \nB. Delete a specific file \nC. Search for a specific file ");
 	    	System.out.println("Enter your choice:");
 	    	Scanner s2=new Scanner(System.in);
@@ -67,6 +68,7 @@ public class Test {
 	    	{
 	    	case "A":
 	    	{
+	    		//addfiles
 	    	Scanner sc1=new Scanner(System.in);
 			System.out.println("Enter File Name:");
 	        String filename=sc1.next();
@@ -124,16 +126,15 @@ public class Test {
 	        	System.out.println();
 	        }
 	        else {
-	        	System.out.println("Invalid Input.");
-	        	break;
+	        	System.out.println("Invalid Input.Showing Main Menu...");
 	        }
 				}
+		//close the application
 	    else if(ch.equals("3")) { 
 	    	System.exit(0);
 	    }else
 	    	{
-	        System.out.println("Invalid Input");
-	        break;
+	        System.out.println("Invalid Input. Showing Main menu...");
 	    }
         }
 	}

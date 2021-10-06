@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class FileOperations {
 	
+	//returns the current file names in ascending order 
 	public static void RecursivePrint(File[] arr,int index,int level) 
     {
         // terminate condition
@@ -37,13 +38,14 @@ public class FileOperations {
         RecursivePrint(arr,++index, level);
    }
 
+	//add user specified files to the existing directory
 	public static void createFileUsingFileClass(String fileName) throws IOException
     {
           File file = new File(fileName);
           //Create the file
           if (file.createNewFile()){
             System.out.println("File is added!");
-            //Write Content
+            //Write Content from UI
 	          FileWriter writer = new FileWriter(file);
 	          System.out.println("Type Yes to write content to the file:");
 	          Scanner s=new Scanner(System.in);
@@ -61,12 +63,13 @@ public class FileOperations {
 	          }
           	}
           else{
-            System.out.println("File already exists.");
+            //if the file name already exist in the directory,the application will show it.
+        	  System.out.println("File already exists.");
           }
     }
+	//this function is used to read file contents
 	public static List<String> readFileInList(String fileName) 
-	  { 
-		  
+	  {  
 	    List<String> lines = Collections.emptyList(); 
 	    try
 	    { 
@@ -79,16 +82,19 @@ public class FileOperations {
 	    } 
 	    return lines; 
 	  } 
+	//this function is used to delete the user specified file from the existing directory.
 	public static void delete(String filename)
 	{
 	boolean a;
 	try {
 		a = Files.deleteIfExists(Paths.get(filename));
-	  	if (a == true)
+	  	//if file found in the directory,it will get deleted.
+		if (a == true)
        	{
        		System.out.println(filename + "-Deleted Successfully.");
        	}
-       	else
+       	//if the user specified file is not in the directory it will show file not found.
+		else
        	{
        		System.out.println("File not Found");
        	}
@@ -97,24 +103,24 @@ public class FileOperations {
 	}
 	}
 
+	//This function is used to search a user specified file in the current directory
 	public static void search(String filename2) {
 		File file = new File(filename2);
         try {
 			if (file.createNewFile()== false)
 				{
 				System.out.println("File found in application");
-				System.out.println("Want to read the content of the file? Type yes or no.");
+				System.out.println("Want to read the content of the file? Type yes to continue or no to exit from application");
 			    Scanner s1=new Scanner(System.in);
 			    String response=s1.next();
 			    if(response.equals("Yes")||response.equals("YES")||response.equals("yes")) {} 
 			    else if (response.equals("No")||response.equals("NO")||response.equals("no"))
 			     	{
-			     		System.exit(0); //back to main menu
+			     		System.exit(0);
 			     	}
 			    else
 			     	{
 			     		System.err.println("Invalid Input");
-			     		System.exit(0);
 			     	}
 			}
 			  else
